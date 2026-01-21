@@ -10,14 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-       - name: Run fixed command
+      - name: Run safe commands
         run: |
-          echo "CI pipeline restarted"
+          echo "CI pipeline running"
+          pwd
           ls
-          echo "Pipeline fixed successfully"
-
-
-
+          echo "CI pipeline finished successfully"
