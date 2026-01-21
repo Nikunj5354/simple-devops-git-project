@@ -13,11 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-        - name: Run basic commands
+       - name: Run fixed command
         run: |
-          echo "CI pipeline started"
+          echo "CI pipeline restarted"
           ls
-          echo "Pipeline finished successfully"
+          echo "Pipeline fixed successfully"
 
 
 
