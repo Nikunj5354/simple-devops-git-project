@@ -13,9 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-       - name: Run broken command
+         - name: Run fixed command
         run: |
-          echo "CI pipeline started"
-          ls not-a-real-folder
-          echo "You will never see this"
+          echo "CI pipeline restarted"
+          ls
+          echo "Pipeline fixed successfully"
+
 
