@@ -20,11 +20,16 @@ jobs:
           echo "Files in repo:"
           ls -la
 
-      - name: Check if README exists
+          - name: Check if README exists (correct path)
         run: |
-          if [ -f README.md ]; then
+          echo "Workspace is: $GITHUB_WORKSPACE"
+          echo "Listing workspace files:"
+          ls -la "$GITHUB_WORKSPACE"
+
+          if [ -f "$GITHUB_WORKSPACE/README.md" ]; then
             echo "README.md found ✅"
           else
             echo "README.md NOT found ❌"
             exit 1
           fi
+
