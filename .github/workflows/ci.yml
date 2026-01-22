@@ -13,12 +13,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Show files (debug)
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Files in repo:"
+          ls -la
+
       - name: Check if README exists
         run: |
-          echo "Checking for README file"
-          if ls README.md readme.md Readme.md 1> /dev/null 2>&1; then
-            echo "README file found ✅"
+          if [ -f README.md ]; then
+            echo "README.md found ✅"
           else
-            echo "README file NOT found ❌"
+            echo "README.md NOT found ❌"
             exit 1
           fi
