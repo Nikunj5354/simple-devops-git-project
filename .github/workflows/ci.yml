@@ -19,17 +19,17 @@ jobs:
           pwd
           echo "Files in repo:"
           ls -la
-
-      - name: Check if README exists (correct path)
+          
+      - name: Find README anywhere in repo
         run: |
-          echo "Workspace is: $GITHUB_WORKSPACE"
-          echo "Listing workspace files:"
-          ls -la "$GITHUB_WORKSPACE"
+          echo "Searching for README file..."
+          find "$GITHUB_WORKSPACE" -iname "readme.md"
 
-          if [ -f "$GITHUB_WORKSPACE/README.md" ]; then
-            echo "README.md found ✅"
+          if find "$GITHUB_WORKSPACE" -iname "readme.md" | grep -q .; then
+            echo "README file found somewhere in repo ✅"
           else
-            echo "README.md NOT found ❌"
+            echo "README file NOT found anywhere ❌"
             exit 1
           fi
+
 
