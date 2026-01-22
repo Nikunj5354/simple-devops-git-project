@@ -33,4 +33,9 @@ jobs:
             exit 1
           fi
 
+      - name: Build Docker image
+        run: |
+          docker build -t simple-ci-docker .
+
+
 
