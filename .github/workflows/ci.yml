@@ -20,7 +20,7 @@ jobs:
           echo "Files in repo:"
           ls -la
 
-          - name: Check if README exists (correct path)
+      - name: Check if README exists (correct path)
         run: |
           echo "Workspace is: $GITHUB_WORKSPACE"
           echo "Listing workspace files:"
