@@ -13,9 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run safe commands
+      - name: Check if README exists
         run: |
-          echo "CI pipeline running"
-          pwd
-          ls
-          echo "CI pipeline finished successfully"
+          echo "Checking for README.md file"
+          if [ -f README.md ]; then
+            echo "README.md found ✅"
+          else
+            echo "README.md NOT found ❌"
+            exit 1
+          fi
+
