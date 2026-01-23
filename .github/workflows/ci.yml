@@ -37,5 +37,24 @@ jobs:
         run: |
           docker build -t simple-ci-docker .
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            cd ~/devops-app
+            docker stop my-nginx || true
+            docker rm my-nginx || true
+            docker build -t devops-app .
+            docker run -d -p 80:80 --name my-nginx devops-app
+
+
 
 
